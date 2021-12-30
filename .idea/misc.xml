@@ -3,7 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/juandaniel/AndroidStudioProjects/ArquitecturaMVVM/app/src/main/res/drawable/search.xml" value="0.26614583333333336" />
         <entry key="..\:/Users/juandaniel/AndroidStudioProjects/ArquitecturaMVVM/app/src/main/res/layout/activity_main.xml" value="0.2359375" />
+        <entry key="..\:/Users/juandaniel/AndroidStudioProjects/ArquitecturaMVVM/app/src/main/res/layout/item_row.xml" value="0.2" />
+        <entry key="..\:/Users/juandaniel/AndroidStudioProjects/ArquitecturaMVVM/app/src/main/res/layout/toolbar.xml" value="0.2391304347826087" />
+        <entry key="..\:/Users/juandaniel/AndroidStudioProjects/ArquitecturaMVVM/app/src/main/res/menu/main_menu.xml" value="0.25" />
+        <entry key="..\:/Users/juandaniel/AndroidStudioProjects/ArquitecturaMVVM/app/src/main/res/menu/menu.xml" value="0.25" />
       </map>
     </option>
   </component>

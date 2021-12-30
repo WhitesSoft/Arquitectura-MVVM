@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "539407247475",
+    "project_id": "arquitecturamvvm",
+    "storage_bucket": "arquitecturamvvm.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:539407247475:android:16b626b5db2f10aae46206",
+        "android_client_info": {
+          "package_name": "com.darksoft.arquitecturamvvm"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "539407247475-1kos2vil7hrv6mmibci8v587u8ggu372.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDuMGtvsT_2GNtGQs99ldRATnKtVKHnB8Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "539407247475-1kos2vil7hrv6mmibci8v587u8ggu372.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
