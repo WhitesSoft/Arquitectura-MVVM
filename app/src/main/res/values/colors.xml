@@ -11,5 +11,6 @@
     <color name="fondoo">#53292929</color>
 
 
+    <color name="shimmer">#dddddd</color>
     <color name="TextInput">#C8896E</color>
 </resources>

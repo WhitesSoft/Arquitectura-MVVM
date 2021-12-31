@@ -10,9 +10,9 @@ import com.darksoft.arquitecturamvvm.databinding.ItemRowBinding
 
 class MainAdapter(private val context: Context): RecyclerView.Adapter<MainAdapter.MainViewHolder>() {
 
-    private var dataList = mutableListOf<VistaDatos>()
+    private var dataList = mutableListOf<VistaClinicaDatos>()
 
-    fun setListData(data: MutableList<VistaDatos>){
+    fun setListData(data: MutableList<VistaClinicaDatos>){
         dataList = data
     }
 
@@ -22,22 +22,20 @@ class MainAdapter(private val context: Context): RecyclerView.Adapter<MainAdapte
     }
 
     override fun onBindViewHolder(holder: MainViewHolder, position: Int) {
-        val datos: VistaDatos = dataList[position]
+        val datos: VistaClinicaDatos = dataList[position]
         holder.bindView(datos)
     }
 
     override fun getItemCount(): Int {
         return if(dataList.size > 0)
             dataList.size
-        else{
-            Toast.makeText(context, "Nadaa", Toast.LENGTH_LONG).show()
+        else
             0
-        }
     }
 
     inner class MainViewHolder(val binding: ItemRowBinding): RecyclerView.ViewHolder(binding.root){
 
-        fun bindView(datos: VistaDatos){
+        fun bindView(datos: VistaClinicaDatos){
             Glide.with(context).load(datos.image_url).into(binding.imageCard)
             binding.txtTitle.text = datos.nombre_clinica
         }
