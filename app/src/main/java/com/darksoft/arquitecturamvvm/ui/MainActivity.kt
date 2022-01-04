@@ -1,5 +1,6 @@
 package com.darksoft.arquitecturamvvm.ui
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
@@ -10,11 +11,12 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.darksoft.arquitecturamvvm.MainAdapter
+import com.darksoft.arquitecturamvvm.Medicina
 import com.darksoft.arquitecturamvvm.viewmodel.MainViewModel
 import com.darksoft.arquitecturamvvm.R
 import com.darksoft.arquitecturamvvm.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), MainAdapter.onItemClickListener {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var adaptador: MainAdapter
@@ -27,8 +29,12 @@ class MainActivity : AppCompatActivity() {
         setContentView(view)
         setSupportActionBar(findViewById(R.id.tool))
 
-        adaptador = MainAdapter(this)
-        binding.rv1.layoutManager = LinearLayoutManager(this)
+        setupRecyclerView()
+    }
+
+    private fun setupRecyclerView(){
+        adaptador = MainAdapter(this, this)
+        binding.rv1.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         binding.rv1.adapter = adaptador
 
         observeData()
@@ -36,7 +42,7 @@ class MainActivity : AppCompatActivity() {
 
     fun observeData(){
         binding.shimmerViewContainer.startShimmer()
-        viewModel.fetchClinicaData().observe(this, Observer {
+        viewModel.fetchDataOptions().observe(this, Observer {
             binding.shimmerViewContainer.stopShimmer()
             binding.shimmerViewContainer.visibility = View.GONE
             adaptador.setListData(it)
@@ -45,7 +51,11 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-
+    override fun onItemClick(id: String) {
+        val intent = Intent(this, Medicina::class.java)
+        intent.putExtra("id", id)
+        startActivity(intent)
+    }
 
     //Menu
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -63,4 +73,6 @@ class MainActivity : AppCompatActivity() {
             super.onOptionsItemSelected(item)
         }
     }
+
+
 }

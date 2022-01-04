@@ -3,12 +3,13 @@ package com.darksoft.arquitecturamvvm
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.darksoft.arquitecturamvvm.base.BaseViewHolder
 import com.darksoft.arquitecturamvvm.databinding.ItemRowBinding
+import com.darksoft.arquitecturamvvm.viewmodel.VistaClinicaDatos
 
-class MainAdapter(private val context: Context): RecyclerView.Adapter<MainAdapter.MainViewHolder>() {
+class MainAdapter(private val context: Context, private val itemClickListener: onItemClickListener): RecyclerView.Adapter<BaseViewHolder<*>> (){
 
     private var dataList = mutableListOf<VistaClinicaDatos>()
 
@@ -16,14 +17,19 @@ class MainAdapter(private val context: Context): RecyclerView.Adapter<MainAdapte
         dataList = data
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainViewHolder {
-        val binding = ItemRowBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return MainViewHolder(binding)
+    interface onItemClickListener{
+        fun onItemClick(id: String)
     }
 
-    override fun onBindViewHolder(holder: MainViewHolder, position: Int) {
-        val datos: VistaClinicaDatos = dataList[position]
-        holder.bindView(datos)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder<*> {
+        val binding = ItemRowBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return ClinicasViewHolder(binding)
+    }
+
+    override fun onBindViewHolder(holder: BaseViewHolder<*>, position: Int) {
+        when(holder){
+            is ClinicasViewHolder -> holder.bind(dataList[position], position)
+        }
     }
 
     override fun getItemCount(): Int {
@@ -33,13 +39,20 @@ class MainAdapter(private val context: Context): RecyclerView.Adapter<MainAdapte
             0
     }
 
-    inner class MainViewHolder(val binding: ItemRowBinding): RecyclerView.ViewHolder(binding.root){
+    inner class ClinicasViewHolder(val binding: ItemRowBinding): BaseViewHolder<VistaClinicaDatos>(binding){
 
-        fun bindView(datos: VistaClinicaDatos){
-            Glide.with(context).load(datos.image_url).into(binding.imageCard)
-            binding.txtTitle.text = datos.nombre_clinica
+        override fun bind(item: VistaClinicaDatos, position: Int) {
+
+            Glide.with(context).load(item.image_url).into(binding.imageCard)
+            binding.txtTitle.text = item.nombre_clinica
+            binding.id.text = item.id
+
+            //CLICK el item del recycler con su parametro para enviar a otra actividad
+            binding.fotoCard.setOnClickListener{ itemClickListener.onItemClick(item.id) }
         }
 
     }
+
+
 
 }

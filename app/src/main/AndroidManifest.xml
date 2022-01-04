@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ArquitecturaMVVM">
         <activity
+            android:name=".Odontologia"
+            android:exported="false" />
+        <activity
+            android:name=".Medicina"
+            android:exported="false" />
+        <activity
             android:name=".ui.MainActivity"
             android:exported="true">
             <intent-filter>
