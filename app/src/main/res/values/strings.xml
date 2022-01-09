@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Arquitectura MVVM</string>
+    <string name="clinicas">CLÍNICAS</string>
+    <string name="txt_verTodos">Ver todos</string>
+    <string name="txt_clinicas_odontologicas">CLÍNICAS ODONTOLOGICAS</string>
+    <string name="txt_consultorios">CONSULTORIOS</string>
+    <string name="txt_fisioterapeutas">FISIOTERAPEUTAS</string>
+    <string name="txt_laboratorios_clinicos">LABORATORIOS CLÍNICOS</string>
 </resources>

@@ -4,44 +4,40 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.darksoft.arquitecturamvvm.domain.data.network.Repositorio
+import com.darksoft.arquitecturamvvm.model.HomeRecyclerViewItem
 
 class MainViewModel: ViewModel() {
 
     private val repo = Repositorio()
 
-    fun fetchClinicaData(): LiveData<MutableList<VistaClinicaDatos>>{
-        val mutableData = MutableLiveData<MutableList<VistaClinicaDatos>>()
+    fun fetchClinics():LiveData<MutableList<HomeRecyclerViewItem>>{
+        val mutableData = MutableLiveData<MutableList<HomeRecyclerViewItem>>()
 
-        repo.getClinicaData().observeForever{listClinica ->
-            mutableData.value = listClinica
+        repo.getClinics().observeForever{data ->
+            mutableData.value = data
         }
+
         return mutableData
     }
 
-    fun fetchDataOptions(): LiveData<MutableList<VistaClinicaDatos>>{
-        val mutableData = MutableLiveData<MutableList<VistaClinicaDatos>>()
+    fun fetchOdonto():LiveData<MutableList<HomeRecyclerViewItem>>{
+        val mutableData = MutableLiveData<MutableList<HomeRecyclerViewItem>>()
 
-        repo.getDataOptions().observeForever{listClinica ->
-            mutableData.value = listClinica
+        repo.getOdonto().observeForever{data ->
+            mutableData.value = data
         }
+
         return mutableData
     }
 
-    fun fetchDataMedicine(): LiveData<MutableList<VistaClinicaDatos>>{
-        val mutableData = MutableLiveData<MutableList<VistaClinicaDatos>>()
 
-        repo.getDataMedicine().observeForever{listClinica ->
-            mutableData.value = listClinica
+    fun fetchConsultorios():LiveData<MutableList<HomeRecyclerViewItem>>{
+        val mutableData = MutableLiveData<MutableList<HomeRecyclerViewItem>>()
+
+        repo.getConsultorios().observeForever{data ->
+            mutableData.value = data
         }
-        return mutableData
-    }
 
-    fun fetchDataOdonto(): LiveData<MutableList<VistaClinicaDatos>>{
-        val mutableData = MutableLiveData<MutableList<VistaClinicaDatos>>()
-
-        repo.getDataOdonto().observeForever{listClinica ->
-            mutableData.value = listClinica
-        }
         return mutableData
     }
 

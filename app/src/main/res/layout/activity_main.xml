@@ -1,45 +1,263 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.MainActivity">
+    android:layout_height="match_parent">
 
-    <RelativeLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        tools:context=".view.MainActivity">
+
+        <include
+            android:id="@+id/tool"
+            layout="@layout/toolbar"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            tools:ignore="MissingConstraints">
+            android:layout_height="match_parent"
+            app:layout_constraintTop_toBottomOf="@id/tool"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_margin="@dimen/_8sdp"
+            android:orientation="vertical">
 
-            <include
-                android:id="@+id/tool"
-                layout="@layout/toolbar"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:id="@+id/conteinerClinic">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/titleClinic"
+                    android:textSize="@dimen/_12sdp"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/poppins"
+                    android:text="@string/clinicas"
+                    android:layout_marginTop="@dimen/_8sdp"
+
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/txtViewAll"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/txtViewAll"
+                    android:text="@string/txt_verTodos"
+                    android:textSize="@dimen/_10sdp"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/poppins"
+                    android:clickable="true"
+                    android:focusable="true"
+
+                    app:layout_constraintTop_toTopOf="@+id/titleClinic"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:layout_constraintBottom_toBottomOf="parent">
+                app:layout_constraintBottom_toBottomOf="parent" />
 
-            </androidx.recyclerview.widget.RecyclerView>
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:id="@+id/conteinerTitleDentalClinic"
+                android:layout_marginTop="@dimen/_20sdp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/titleDentalClinic"
+                    android:textSize="@dimen/_12sdp"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/poppins"
+                    android:text="@string/txt_clinicas_odontologicas"
+
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/txtViewAllDentalClinics"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/txtViewAllDentalClinics"
+                    android:text="@string/txt_verTodos"
+                    android:textSize="@dimen/_10sdp"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/poppins"
+                    android:clickable="true"
+                    android:focusable="true"
+
+                    app:layout_constraintTop_toTopOf="@+id/titleDentalClinic"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:id="@+id/conteinerConsultorios"
+                android:layout_marginTop="@dimen/_20sdp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/titleConsultorios"
+                    android:textSize="@dimen/_12sdp"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/poppins"
+                    android:text="@string/txt_consultorios"
+
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/txtViewAllConsultorios"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/txtViewAllConsultorios"
+                    android:text="@string/txt_verTodos"
+                    android:textSize="@dimen/_10sdp"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/poppins"
+                    android:clickable="true"
+                    android:focusable="true"
+
+
+                    app:layout_constraintTop_toTopOf="@+id/titleConsultorios"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:id="@+id/conteinerFisioterapeutas"
+                android:layout_marginTop="@dimen/_20sdp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/titleFisioterapeutas"
+                    android:textSize="@dimen/_12sdp"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/poppins"
+                    android:text="@string/txt_fisioterapeutas"
+
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/txtViewAllFisioterapeutas"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/txtViewAllFisioterapeutas"
+                    android:text="@string/txt_verTodos"
+                    android:textSize="@dimen/_10sdp"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/poppins"
+                    android:clickable="true"
+                    android:focusable="true"
+
+                    app:layout_constraintTop_toTopOf="@+id/titleFisioterapeutas"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv4"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:id="@+id/conteinerLabsClinics"
+                android:layout_marginTop="@dimen/_20sdp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/titleLabsClinics"
+                    android:textSize="@dimen/_12sdp"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/poppins"
+                    android:text="@string/txt_laboratorios_clinicos"
+
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/txtViewAllLabsClinics"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/txtViewAllLabsClinics"
+                    android:text="@string/txt_verTodos"
+                    android:textSize="@dimen/_10sdp"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/poppins"
+                    android:clickable="true"
+                    android:focusable="true"
+
+                    app:layout_constraintTop_toTopOf="@+id/titleLabsClinics"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv5"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
 
         </LinearLayout>
-
 
         <com.facebook.shimmer.ShimmerFrameLayout
             android:id="@+id/shimmer_view_container"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="?actionBarSize">
+            android:layout_height="match_parent"
+
+            app:layout_constraintTop_toBottomOf="@+id/tool">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -51,12 +269,21 @@
                 <include layout="@layout/item_row_load"/>
                 <include layout="@layout/item_row_load"/>
                 <include layout="@layout/item_row_load"/>
+                <include layout="@layout/item_row_load"/>
+                <include layout="@layout/item_row_load"/>
+                <include layout="@layout/item_row_load"/>
 
             </LinearLayout>
 
         </com.facebook.shimmer.ShimmerFrameLayout>
 
-    </RelativeLayout>
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+</ScrollView>

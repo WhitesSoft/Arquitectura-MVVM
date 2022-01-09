@@ -9,14 +9,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ArquitecturaMVVM">
+
         <activity
-            android:name=".Odontologia"
-            android:exported="false" />
+            android:name=".view.ViewAllData"
+            android:exported="false"
+            android:label="CLINICAS"/>
+
         <activity
-            android:name=".Medicina"
-            android:exported="false" />
-        <activity
-            android:name=".ui.MainActivity"
+            android:name=".view.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

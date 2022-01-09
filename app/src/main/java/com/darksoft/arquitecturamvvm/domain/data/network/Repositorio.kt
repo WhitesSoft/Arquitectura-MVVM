@@ -2,90 +2,79 @@ package com.darksoft.arquitecturamvvm.domain.data.network
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.darksoft.arquitecturamvvm.viewmodel.VistaClinicaDatos
+import com.darksoft.arquitecturamvvm.model.HomeRecyclerViewItem
 import com.google.firebase.firestore.FirebaseFirestore
 
 class Repositorio {
 
-    fun getClinicaData(): LiveData<MutableList<VistaClinicaDatos>>{
-        val mutableData = MutableLiveData<MutableList<VistaClinicaDatos>>()
+    fun getClinics(): LiveData<MutableList<HomeRecyclerViewItem>>{
 
-        FirebaseFirestore.getInstance().collection("DatosClinicas").get().addOnSuccessListener { result ->
-            val listData = mutableListOf<VistaClinicaDatos>()
-            for (document in result){
-                val image_url = document.getString("image_url")
-                val nombre_clinica = document.getString("nombre_clinica")
+        val mutableData = MutableLiveData<MutableList<HomeRecyclerViewItem>>()
 
-                val dataClinica = VistaClinicaDatos(image_url!!, nombre_clinica!!)
-                listData.add(dataClinica)
-            }
-
-            mutableData.value = listData
-        }
-        return mutableData
-    }
-
-    fun getDataOptions(): LiveData<MutableList<VistaClinicaDatos>>{
-
-        val mutableData = MutableLiveData<MutableList<VistaClinicaDatos>>()
-
-        FirebaseFirestore.getInstance().collection("OptionsClinicas").get().addOnSuccessListener { result ->
-            val listData = mutableListOf<VistaClinicaDatos>()
+        FirebaseFirestore.getInstance().collection("OptionsClinicas").document("clinicas")
+            .collection("clinicas").get().addOnSuccessListener { result ->
+            val listData = mutableListOf<HomeRecyclerViewItem>()
+            //listData.add(HomeRecyclerViewItem.Title("1", "Puede ser shi?"))
             for (document in result){
                 val id = document.getString("id")
                 val image_url = document.getString("image_url")
                 val nombre_clinica = document.getString("nombre_clinica")
 
-                val dataClinica = VistaClinicaDatos(id!!, image_url!!, nombre_clinica!!)
+                val dataClinica = HomeRecyclerViewItem.Clinics(id!!, image_url!!, nombre_clinica!!)
                 listData.add(dataClinica)
             }
 
             mutableData.value = listData
         }
+
 
         return mutableData
     }
 
-    fun getDataMedicine(): LiveData<MutableList<VistaClinicaDatos>>{
+    fun getOdonto(): LiveData<MutableList<HomeRecyclerViewItem>>{
 
-        val mutableData = MutableLiveData<MutableList<VistaClinicaDatos>>()
+        val mutableData = MutableLiveData<MutableList<HomeRecyclerViewItem>>()
 
-        FirebaseFirestore.getInstance().collection("OptionsClinicas").document("1").
-        collection("medicina").get().addOnSuccessListener { result ->
-            val listData = mutableListOf<VistaClinicaDatos>()
-            for (document in result){
-                val id = document.getString("id")
-                val image_url = document.getString("image_url")
-                val nombre_clinica = document.getString("nombre_clinica")
+        FirebaseFirestore.getInstance().collection("OptionsClinicas").document("odonto")
+            .collection("odonto").get().addOnSuccessListener { result ->
+                val listData = mutableListOf<HomeRecyclerViewItem>()
+                //listData.add(HomeRecyclerViewItem.Title("1", "Puede ser shi?"))
+                for (document in result){
+                    val id = document.getString("id")
+                    val image_url = document.getString("image_url")
+                    val nombre_clinica = document.getString("nombre_clinica")
 
-                val dataClinica = VistaClinicaDatos(id!!, image_url!!, nombre_clinica!!)
-                listData.add(dataClinica)
+                    val dataClinica = HomeRecyclerViewItem.Clinics(id!!, image_url!!, nombre_clinica!!)
+                    listData.add(dataClinica)
+                }
+
+                mutableData.value = listData
             }
 
-            mutableData.value = listData
-        }
 
         return mutableData
     }
 
-    fun getDataOdonto(): LiveData<MutableList<VistaClinicaDatos>>{
+    fun getConsultorios(): LiveData<MutableList<HomeRecyclerViewItem>>{
 
-        val mutableData = MutableLiveData<MutableList<VistaClinicaDatos>>()
+        val mutableData = MutableLiveData<MutableList<HomeRecyclerViewItem>>()
 
-        FirebaseFirestore.getInstance().collection("OptionsClinicas").document("2").
-        collection("odontologia").get().addOnSuccessListener { result ->
-            val listData = mutableListOf<VistaClinicaDatos>()
-            for (document in result){
-                val id = document.getString("id")
-                val image_url = document.getString("image_url")
-                val nombre_clinica = document.getString("nombre_clinica")
+        FirebaseFirestore.getInstance().collection("OptionsClinicas").document("consultorios")
+            .collection("consultorios").get().addOnSuccessListener { result ->
+                val listData = mutableListOf<HomeRecyclerViewItem>()
 
-                val dataClinica = VistaClinicaDatos(id!!, image_url!!, nombre_clinica!!)
-                listData.add(dataClinica)
+                for (document in result){
+                    val id = document.getString("id")
+                    val image_url = document.getString("image_url")
+                    val nombre_clinica = document.getString("nombre_clinica")
+
+                    val dataClinica = HomeRecyclerViewItem.Clinics(id!!, image_url!!, nombre_clinica!!)
+                    listData.add(dataClinica)
+                }
+
+                mutableData.value = listData
             }
 
-            mutableData.value = listData
-        }
 
         return mutableData
     }
