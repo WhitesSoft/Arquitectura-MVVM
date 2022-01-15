@@ -41,8 +41,12 @@ class MainActivity : AppCompatActivity(){
     private fun itemClicks() {
         clinics.itemClick = { view: View, item: HomeRecyclerViewItem, position: Int ->
             when(item){
-                is HomeRecyclerViewItem.Clinics -> Toast.makeText(this, "clinica: ${item.nombre_clinica} clickeada",
-                Toast.LENGTH_LONG).show()
+                is HomeRecyclerViewItem.Clinics -> {
+                    Toast.makeText(this, "clinica: ${item.id} clickeada", Toast.LENGTH_LONG).show()
+                    val intent = Intent(this, InformacionClinica::class.java)
+                    intent.putExtra("id", item.id)
+                    startActivity(intent)
+                }
             }
         }
 
